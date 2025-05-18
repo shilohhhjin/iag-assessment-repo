@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: questions_with_asker_mentions
+    description: >
+      This model counts how many distinct questions have comments from the question author that @mention other users.
+      It extracts all user mentions from comments on questions and answers, and filters to only those where the author 
+      of the comment is also the original question author, and the @mention is directed at someone else.
+    columns:
+      - name: questions_with_asker_mentions
+        description: Number of distinct question posts with @mentions from the original asker to other users.
+        tests:
+          - not_null

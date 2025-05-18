@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_badges
+    description: >
+      This table records the badges users earn on the platform. Each row 
+      corresponds to a badge earned by a specific user, with metadata
+      such as the badge name, awarding time, and whether it is tag-based.
+
+    columns:
+      - name: badge_id
+        description: "Unique identifier for the badge record. Internal row ID."
+        tests:
+          - unique
+          - not_null
+
+      - name: user_id
+        description: "The ID of the user who earned the badge. Foreign key to the Users table."
+        tests:
+          - not_null
+
+      - name: badge_name
+        description: >
+          The name of the badge awarded. For example, 'Teacher' is awarded
+          when a user gives their first upvoted answer.
+        tests:
+          - not_null
+
+      - name: date
+        description: "The timestamp when the badge was awarded."
+        tests:
+          - not_null
+
+      - name: class
+        description: >
+          Badge tier: 1 = Gold, 2 = Silver, 3 = Bronze. Indicates the rarity
+          or value of the badge.
+        tests:
+          - accepted_values:
+              values: [1, 2, 3]
+
+      - name: tag_based
+        description: >
+          Boolean flag showing whether the badge is associated with a specific
+          tag (such as python, sql, or javascript).
+        tests:
+          - accepted_values:
+              values: [true, false]

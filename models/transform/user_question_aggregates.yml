@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: user_question_aggregates
+    description: >
+      Aggregates the total view count of questions posted by each user. 
+      Only includes posts with post_type_id = 1 (questions). Each row 
+      represents a user and the sum of view counts for their questions.
+
+    columns:
+      - name: user_id
+        description: "Unique identifier of the user who asked the questions."
+        tests:
+          - not_null
+
+      - name: user_display_name
+        description: "Display name of the user who asked the questions."
+        tests:
+          - not_null
+
+      - name: total_view_count
+        description: "Total number of views on all questions asked by the user."
+        tests:
+          - not_null

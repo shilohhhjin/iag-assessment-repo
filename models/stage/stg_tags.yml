@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_tags
+    description: >
+      This model represents the tags used on Stack Overflow. Tags help
+      categorize questions by topic (e.g., 'python', 'sql', 'javascript').
+      Each tag may link to a tag wiki and an excerpt post.
+
+    columns:
+      - name: tag_id
+        description: "Primary key. Unique identifier for the tag."
+        tests:
+          - unique
+          - not_null
+
+      - name: tag_name
+        description: "The name of the tag (e.g., 'python', 'sql')."
+        tests:
+          - not_null
+          - unique
+
+      - name: count
+        description: "The number of times this tag has been used in posts."
+
+      - name: excerpt_post_id
+        description: "ID of the post containing the tag excerpt/summary."
+
+      - name: wiki_post_id
+        description: "ID of the post that serves as the tag wiki."
+

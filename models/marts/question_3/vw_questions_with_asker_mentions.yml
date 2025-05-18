@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: questions_with_asker_mentions_monthly
+    description: >
+      A view that retrieves all records from the `questions_with_asker_mentions` table and orders them by month.
+      Intended to be used for time-based analysis of asker @mentions across questions.
+
+    columns:
+      - name: questions_with_asker_mentions
+        description: Number of distinct question posts with @mentions from the original asker to other users.
+

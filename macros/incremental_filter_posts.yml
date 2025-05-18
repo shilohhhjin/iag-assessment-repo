@@ -1,0 +1,30 @@
+version: 2
+
+macros:
+  - name: incremental_filter_by_id_and_recent_date
+    description: >
+      Adds incremental filter logic for models that use an increasing ID column and a creation date column.
+      This macro is designed to be used in incremental dbt models. 
+
+      If the model is running incrementally (not a full refresh), it applies:
+        1. A filter to include only rows where the ID is greater than the maximum ID already present in the target table.
+        2. A filter to include only rows from the last `n` months based on a date column (default is 12 months).
+
+      This macro helps reduce the amount of data processed on each run while ensuring late-arriving data within the recent months is still captured.
+
+    arguments:
+      - name: id_column
+        type: string
+        description: The name of the incremental ID column, typically a unique and increasing identifier like `post_id`.
+
+      - name: date_column
+        type: string
+        description: The name of the column containing the date used to filter recent rows (e.g., `creation_date`).
+
+      - name: months
+        type: integer
+        description: Number of months of recent data to include in the filter window. Default is 12.
+
+      - name: table
+        type: string (optional)
+        description: Optional. A dbt reference or table name to compare against. If not provided, defaults to the current model (`this`).

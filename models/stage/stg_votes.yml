@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_votes
+    description: >
+      This model represents individual votes cast on Stack Overflow posts.
+      Each row records a vote by type, the post it was cast on, and the timestamp.
+
+    columns:
+      - name: vote_id
+        description: "Primary key. Unique identifier for the vote."
+        tests:
+          - unique
+          - not_null
+
+      - name: post_id
+        description: "ID of the post the vote was cast on."
+        tests:
+          - not_null
+
+      - name: vote_type_id
+        description: >
+          The type of vote (e.g., 2 = Upvote, 3 = Downvote, 5 = Favorite).
+          Vote types define the action taken by the user.
+        tests:
+          - not_null
+
+      - name: creation_date
+        description: "Timestamp when the vote was cast."
+        tests:
+          - not_null

@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_comments
+    description: >
+      This model represents comments on Stack Overflow posts. 
+      Each comment is tied to a post and may have a user, score, creation date, 
+      and license metadata.
+
+    columns:
+      - name: comment_id
+        description: "Unique identifier for each comment."
+        tests:
+          - unique
+          - not_null
+
+      - name: post_id
+        description: "Foreign key referencing the associated post."
+        tests:
+          - not_null
+
+      - name: score
+        description: "The score of the comment, based on upvotes and downvotes."
+
+      - name: text
+        description: "The content of the comment."
+
+      - name: creation_date
+        description: "The date and time when the comment was created."
+        tests:
+          - not_null
+
+      - name: user_id
+        description: "ID of the user who wrote the comment, if available."
+
+      - name: content_license
+        description: "The license under which the comment was published."

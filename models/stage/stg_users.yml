@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: >
+      This model represents Stack Overflow users. Each row contains 
+      information about a registered user including reputation, profile 
+      details, and activity metadata.
+
+    columns:
+      - name: user_id
+        description: "Primary key. Unique identifier for the user."
+        tests:
+          - unique
+          - not_null
+
+      - name: reputation_score
+        description: "The user's reputation score, indicating community trust."
+
+      - name: creation_date
+        description: "The date and time when the user account was created."
+        tests:
+          - not_null
+
+      - name: user_display_name
+        description: "The display name chosen by the user."
+
+      - name: last_access_date
+        description: "The last time the user accessed the platform."
+
+      - name: about_me
+        description: "The user’s self-written bio, formatted in Markdown."
+
+      - name: views
+        description: "How many times the user's profile has been viewed."
+
+      - name: up_votes
+        description: "Total number of upvotes the user has given to posts."
+
+      - name: down_votes
+        description: "Total number of downvotes the user has given to posts."

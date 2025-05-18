@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: vw_top_users_by_question
+    description: >
+      This model selects the top 10 users whose questions have the highest total view counts.
+      It is derived from the `user_question_aggregates` model and sorted in descending order by total views.
+
+    columns:
+      - name: user_id
+        description: "Unique identifier of the user."
+        tests:
+          - not_null
+
+      - name: user_display_name
+        description: "Display name of the user."
+        tests:
+          - not_null
+
+      - name: total_view_count
+        description: "Sum of views for all questions asked by the user."
+        tests:
+          - not_null

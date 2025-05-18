@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: vw_questions_with_accepted_answer
+    description: >
+      This model analyzes the time taken for accepted answers to appear on Stack Overflow questions.
+      It classifies the time differences into bands (e.g., '<1 min', '1-5 mins') for each month,
+      based on the creation date of the question and its accepted answer.
+
+    columns:
+      - name: month
+        description: The year and month (formatted as YYYY-MM) in which the question was created.
+
+      - name: "<1 min"
+        description: The count of accepted answers that appeared within 1 minute after the question was posted.
+
+      - name: "1-5 mins"
+        description: The count of accepted answers that appeared between 1 and 5 minutes after the question was posted.
+
+      - name: "5 mins-1 hour"
+        description: The count of accepted answers that appeared between 5 minutes and 1 hour after the question was posted.
+
+      - name: "1-3 hours"
+        description: The count of accepted answers that appeared between 1 and 3 hours after the question was posted.
+
+      - name: "3 hours-1 day"
+        description: The count of accepted answers that appeared between 3 hours and 1 day after the question was posted.
+
+      - name: "etc.."
+        description: The count of accepted answers that appeared more than 1 day after the question was posted.

@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: stg_posts
+    description: >
+      This model represents all Stack Overflow posts, including both questions and answers.
+      It captures metadata like creation date, score, tags, view count, and relationships to users and other posts.
+
+    columns:
+      - name: post_id
+        description: "Primary key. Unique identifier for the post."
+        tests:
+          - unique
+          - not_null
+
+      - name: post_type_id
+        description: "Type of the post (1 = Question, 2 = Answer)."
+        tests:
+          - not_null
+
+      - name: accepted_answer_id
+        description: "ID of the accepted answer (for questions)."
+
+
+      - name: parent_id
+        description: "ID of the parent question (for answers)."
+
+
+      - name: creation_date
+        description: "Timestamp when the post was created."
+        tests:
+          - not_null
+
+      - name: score
+        description: "The score of the post, based on votes."
+
+      - name: view_count
+        description: "Number of times the post has been viewed."
+
+      - name: body
+        description: "The full text of the post (Markdown format)."
+
+      - name: owner_user_id
+        description: "ID of the user who created the post."
+
+
+      - name: last_editor_user_id
+        description: "ID of the user who last edited the post."
+
+
+      - name: last_editor_display_name
+        description: "Display name of the user who last edited (if anonymous or deleted)."
+
+      - name: last_edit_date
+        description: "Timestamp of the last edit."
+
+      - name: last_activity_date
+        description: "Timestamp of the most recent activity on the post."
+
+      - name: title
+        description: "Title of the post (only for questions)."
+
+      - name: tags
+        description: "Tags associated with the post (e.g., <python><sql>)."
+
+      - name: answer_count
+        description: "Number of answers the question received."
+
+      - name: comment_count
+        description: "Number of comments on the post."
+
+      - name: favorite_count
+        description: "Number of times the post was favorited."
+
+      - name: community_owned_date
+        description: "Timestamp when the post became community-owned."
+
+      - name: content_license
+        description: "License under which the post was published."
